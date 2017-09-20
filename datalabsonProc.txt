@@ -1,0 +1,9 @@
+gcloud dataproc clusters create procdata --initialization-actions gs://datalab_dataproc/datalab.sh --master-machine-type=n1-standard-8 --worker-machine-type=n1-standard-32 --scopes cloud-platform
+
+
+gcloud compute ssh --zone us-central1-a --ssh-flag="-D 1086" --ssh-flag="-N" --ssh-flag="-n" procdata-m
+
+
+
+ /usr/bin/google-chrome --proxy-server="socks5://localhost:1086" --host-resolver-rules="MAP * 0.0.0.0 , EXCLUDE localhost" --user-data-dir=/tmp/
+
